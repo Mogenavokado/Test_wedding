@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Invited!</title>
+  <style>
+
+    body {
+    /* Step 3a: Link to your background image */
+        background-image: url('Messenger_creation_C94B7EEC-34C4-4EF9-BE17-47819CC9DDB4.jpg'); /* Use the correct filename/path */
+
+        /* Step 3b: Key background properties for coverage */
+        background-size: cover;          /* Ensures the image fills the entire screen */
+        background-position: center;     /* Centers the image on the page */
+        background-repeat: no-repeat;    /* Prevents the image from tiling */
+        background-attachment: fixed;    /* (Optional) The image stays put when scrolling */
+
+        font-family: 'Georgia', serif;
+        color: #ffffff; /* White text looks best on dark/translucent overlays */
+        text-align: center;
+        padding: 40px 20px;
+        margin: 0;
+        min-height: 100vh;
+    }
+    .card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h1 { color: #8b5e3c; }
+    .btn-group { margin-top: 20px; }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .yes-btn { background-color: #708d81; color: white; }
+    .no-btn { background-color: #d8b4a0; color: white; }
+    form {
+      text-align: left;
+      margin-top: 20px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+    .submit-btn {
+      background-color: #708d81;
+      color: white;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Save the Date</h1>
+    <p>We are getting married!</p>
+    <h2>Name & Name</h2>
+    <p>📅 Date | 📍 Venue, Location</p>
+    
+    <div id="initialQuestion">
+      <h3>Will you be attending?</h3>
+      <div class="btn-group">
+        <button class="yes-btn" onclick="selectAttending('Yes')">Joyfully Accept</button>
+        <button class="no-btn" onclick="selectAttending('No')">Regretfully Decline</button>
+      </div>
+    </div>
+
+    <!-- Hidden form that reveals after clicking an option -->
+    <div id="rsvpSection" style="display:none; margin-top: 20px;">
+      <form id="rsvpForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="attending">Attendance Status</label>
+        <select id="attending" name="attending">
+          <option value="Yes">Continue</option>
+          <option value="No">Decline</option>
+        </select>
+
+        <label for="guests">Number of Guests</label>
+        <input type="number" id="guests" name="guests" min="1" value="1">
+
+        <label for="">Name your guests (Full name) / Notes</label>
+        <textarea id="dietary" name="Notes" rows="3"></textarea>
+
+        <button type="submit" id="submitBtn" class="submit-btn">Send Response</button>
+      </form>
+
+      <p id="statusMessage" style="display:none; text-align: center; margin-top: 15px;"></p>
+    </div>
+  </div>
+
+  <script>
+    // 1. PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJk-Za0A9UcCBcDtZD5zUP5txXWRUgNAW5rA6lnILvEBmtru-ZIqeD1yaFRsjfsDKz/exec';
+
+    const initialQuestion = document.getElementById('initialQuestion');
+    const rsvpSection = document.getElementById('rsvpSection');
+    const form = document.getElementById('rsvpForm');
+    const statusMsg = document.getElementById('statusMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // 2. Function triggered when clicking "Joyfully Accept" or "Regretfully Decline"
+    function selectAttending(status) {
+      initialQuestion.style.display = 'none'; // Hide initial buttons
+      rsvpSection.style.display = 'block';      // Show the details form
+      document.getElementById('attending').value = status; // Pre-select attendance choice
+    }
+
+    // 3. Form submit handler that sends the data to your Google Sheet
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending...';
+
+      const formData = {
+        name: form.name.value,
+        attending: form.attending.value,
+        guests: form.guests.value,
+        dietary: form.dietary.value
+      };
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(() => {
+        statusMsg.style.display = 'block';
+        statusMsg.innerText = 'Thank you! Your RSVP has been received.';
+        statusMsg.style.color = 'green';
+        form.style.display = 'none'; // Hide the form after successful submit
+      })
+      .catch(error => {
+        statusMsg.style.display = 'block';
+        statusMsg.innerText = 'Something went wrong. Please try again.';
+        statusMsg.style.color = 'red';
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send Response';
+      });
+    });
+  </script>
+</body>
+</html>
