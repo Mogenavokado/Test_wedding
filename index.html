@@ -7,52 +7,64 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap');
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-    /* Step 3a: Link to your background image */
-        background-image: url('Gemini_Generated_Image_96golp96golp96go.jpg'); /* Use the correct filename/path */
-
-        /* Step 3b: Key background properties for coverage */
-        background-size: contain;           /* Shows the entire image without cropping */
-        background-position: center center; /* Centers the image on the page */
-        background-repeat: no-repeat;       /* Prevents the image from tiling */
-        background-attachment: fixed;      /* (Optional) The image stays put when scrolling */
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Cormorant Garamond', 'Georgia', serif;
-        color: #4d2f1d; /* Darker gold-brown text for elegant invitation styling */
-        text-align: center;
-        padding: 40px 20px;
-        margin: 0;
-        min-height: 100vh;
-        box-sizing: border-box;
+      min-height: 100vh;
+      margin: 0;
+      background: #d8c8b3;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      color: #4d2f1d;
+      text-align: center;
+    }
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      min-height: 72svh;
+      background-color: #b9a991;
+      background-image:
+        linear-gradient(180deg, rgba(30, 24, 18, 0.08), rgba(30, 24, 18, 0.24)),
+        url('Gemini_Generated_Image_96golp96golp96go.jpg'),
+        radial-gradient(ellipse at 50% 20%, #f1e8d8 0%, #c8b69a 52%, #8d7964 100%);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .scroll-cue {
+      position: absolute;
+      right: 16px;
+      bottom: 66px;
+      left: 16px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+    }
+    .scroll-cue span {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1;
     }
     .card {
-      width: min(380px, calc(100vw - 40px));
-      max-width: 85vw;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.45);
+      position: relative;
+      z-index: 1;
+      width: min(500px, calc(100% - 32px));
+      margin: -46px auto 40px;
+      background: rgba(255, 255, 255, 0.76);
       color: #4d2f1d;
-      padding: 25px;
+      padding: clamp(20px, 5vw, 30px);
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      box-sizing: border-box;
+      box-shadow: 0 8px 28px rgba(41, 30, 20, 0.2);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
       border: 1px solid rgba(89, 57, 34, 0.18);
-    }
-    @media (max-width: 480px) {
-      .card {
-        width: 85vw;
-        max-width: 280px;
-        padding: 20px;
-      }
     }
     h1 {
       color: #4d2f1d;
       font-family: 'Parisienne', 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
+      font-size: 3.2rem;
       font-weight: 400;
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       letter-spacing: 1px;
     }
     h2, h3, h4, h5, p, label {
@@ -61,28 +73,27 @@
       margin: 0;
     }
     h2 {
-      font-size: 1.3rem;
+      font-size: 1.8rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
     h3 {
-      font-size: 1.6rem;
+      font-size: 2.3rem;
       font-weight: 600;
-      margin-top: 6px;
-      margin-bottom: 12px;
-      font-size: 0.95rem;
+      margin-top: 8px;
+      margin-bottom: 16px;
     }
     h4 {
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       line-height: 1.5;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
     #initialQuestion h5 {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 8px;
     }
@@ -94,11 +105,11 @@
     .card label {
       color: #4d2f1d;
     }
-    .btn-group { margin-top: 15px; }
+    .btn-group { margin-top: 20px; }
     button {
-      padding: 10px 18px;
-      font-size: 14px;
-      margin: 8px;
+      padding: 12px 24px;
+      font-size: 16px;
+      margin: 10px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -110,28 +121,28 @@
     .no-btn { background-color: #d8b4a0; color: white; }
     form {
       text-align: left;
-      margin-top: 15px;
+      margin-top: 20px;
     }
     input, select, textarea {
       width: 100%;
-      padding: 8px 10px;
-      margin-top: 4px;
-      margin-bottom: 12px;
+      padding: 10px 12px;
+      margin-top: 5px;
+      margin-bottom: 15px;
       box-sizing: border-box;
       border: 1px solid rgba(89, 57, 34, 0.3);
       border-radius: 6px;
       font-family: 'Cormorant Garamond', 'Georgia', serif;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       color: #4d2f1d;
       background: rgba(255,255,255,0.5);
     }
     label {
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 600;
     }
     .field-hint {
-      margin: -8px 0 12px;
-      font-size: 0.9rem;
+      margin: -10px 0 15px;
+      font-size: 1rem;
       text-align: left;
     }
     .submit-btn {
@@ -139,17 +150,43 @@
       color: white;
       width: 100%;
     }
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 62vh;
+        min-height: 62svh;
+        background-position: center;
+      }
+      .scroll-cue {
+        bottom: 62px;
+        font-size: 1rem;
+      }
+      h1 { font-size: clamp(2.5rem, 11vw, 3.2rem); }
+      h2 { font-size: 1.4rem; }
+      h3 { font-size: clamp(1.8rem, 8vw, 2.3rem); }
+      h4 { font-size: 1rem; }
+      .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+      }
+      button { margin: 6px 2px; }
+    }
   </style>
 </head>
 <body>
 
+  <div class="hero" aria-label="Wedding invitation background">
+    <p class="scroll-cue">Scroll down to respond <span aria-hidden="true">↓</span></p>
+  </div>
   <div class="card">
     <h1>Wedding Invitation</h1>
-    <h2>Linda Diec & Daniel Tran</h2>
-    <h3>📅 30.07.2027 | 📍 MARINA BAY RESORT, VUNG TAU, VIETNAM</h3>
+    <h2>The Marriage Of </h2>
+    <h3>Linda Diec & Daniel Tran</h3>
+    <h4>📅 30.07.2027 | 📍 MARINA BAY RESORT, VUNG TAU, VIETNAM</h4>
     
     <div id="initialQuestion">
-      <h4>Will you be attending?</h4>
+      <h5>Will you be attending?</h5>
       <div class="btn-group">
         <button class="yes-btn" onclick="selectAttending('Yes')">YES</button>
         <button class="no-btn" onclick="selectAttending('No')">POLITELY NO</button>
@@ -157,7 +194,7 @@
     </div>
 
     <!-- Hidden form that reveals after clicking an option -->
-    <div id="rsvpSection" style="display:none; margin-top: 15px;">
+    <div id="rsvpSection" style="display:none; margin-top: 20px;">
       <form id="rsvpForm">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" required>
@@ -185,7 +222,7 @@
         <textarea id="guestNames" name="guestNames" rows="2"></textarea>
 
         <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" rows="2"></textarea>
+        <textarea id="notes" name="notes" rows="3"></textarea>
 
         <label for="allergies">Allergies</label>
         <textarea id="allergies" name="allergies" rows="2"></textarea>
@@ -193,7 +230,7 @@
         <button type="submit" id="submitBtn" class="submit-btn">Send Response</button>
       </form>
 
-      <p id="statusMessage" style="display:none; text-align: center; margin-top: 12px;"></p>
+      <p id="statusMessage" style="display:none; text-align: center; margin-top: 15px;"></p>
     </div>
   </div>
 
@@ -219,7 +256,7 @@
       'Cabo Verde': '238', 'Cambodia': '855', 'Cameroon': '237', 'Canada': '1',
       'Central African Republic': '236', 'Chad': '235', 'Chile': '56', 'China': '86',
       'Colombia': '57', 'Comoros': '269', 'Congo': '242', 'Costa Rica': '506',
-      'Côte d'Ivoire': '225', 'Croatia': '385', 'Cuba': '53', 'Cyprus': '357',
+      'Côte d’Ivoire': '225', 'Croatia': '385', 'Cuba': '53', 'Cyprus': '357',
       'Czechia': '420', 'Democratic Republic of the Congo': '243', 'Denmark': '45',
       'Djibouti': '253', 'Dominica': '1 767', 'Dominican Republic': '1 809',
       'Ecuador': '593', 'Egypt': '20', 'El Salvador': '503', 'Equatorial Guinea': '240',
@@ -266,7 +303,7 @@
       'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil',
       'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi',
       'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad',
-      'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Côte d'Ivoire',
+      'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Côte d’Ivoire',
       'Croatia', 'Cuba', 'Cyprus', 'Czechia',
       'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica',
       'Dominican Republic',
