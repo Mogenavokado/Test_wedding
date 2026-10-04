@@ -30,6 +30,7 @@
     }
     .card {
       width: min(500px, calc(100vw - 40px));
+      max-width: 90vw;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.68);
       color: #4d2f1d;
@@ -38,6 +39,13 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       box-sizing: border-box;
       border: 1px solid rgba(89, 57, 34, 0.18);
+    }
+    @media (max-width: 480px) {
+      .card {
+        width: 85vw;
+        max-width: 320px;
+        padding: 25px;
+      }
     }
     h1 {
       color: #4d2f1d;
@@ -211,7 +219,7 @@
       'Cabo Verde': '238', 'Cambodia': '855', 'Cameroon': '237', 'Canada': '1',
       'Central African Republic': '236', 'Chad': '235', 'Chile': '56', 'China': '86',
       'Colombia': '57', 'Comoros': '269', 'Congo': '242', 'Costa Rica': '506',
-      'Côte d’Ivoire': '225', 'Croatia': '385', 'Cuba': '53', 'Cyprus': '357',
+      'Côte d'Ivoire': '225', 'Croatia': '385', 'Cuba': '53', 'Cyprus': '357',
       'Czechia': '420', 'Democratic Republic of the Congo': '243', 'Denmark': '45',
       'Djibouti': '253', 'Dominica': '1 767', 'Dominican Republic': '1 809',
       'Ecuador': '593', 'Egypt': '20', 'El Salvador': '503', 'Equatorial Guinea': '240',
@@ -258,7 +266,7 @@
       'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil',
       'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi',
       'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad',
-      'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Côte d’Ivoire',
+      'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Côte d'Ivoire',
       'Croatia', 'Cuba', 'Cyprus', 'Czechia',
       'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica',
       'Dominican Republic',
