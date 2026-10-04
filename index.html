@@ -16,20 +16,25 @@
         background-repeat: no-repeat;       /* Prevents the image from tiling */
         background-attachment: fixed;      /* (Optional) The image stays put when scrolling */
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-family: 'Georgia', serif;
         color: #ffffff; /* White text looks best on dark/translucent overlays */
         text-align: center;
         padding: 40px 20px;
         margin: 0;
         min-height: 100vh;
+        box-sizing: border-box;
     }
     .card {
-      max-width: 500px;
+      width: min(500px, calc(100vw - 40px));
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-sizing: border-box;
     }
     h1 { color: #8b5e3c; }
     .btn-group { margin-top: 20px; }
