@@ -7,49 +7,39 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      background-image: url('Gemini_Generated_Image_96golp96golp96go.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-attachment: scroll;
-      font-family: 'Cormorant Garamond', 'Georgia', serif;
-      color: #4d2f1d;
-    }
+    /* Step 3a: Link to your background image */
+        background-image: url('Gemini_Generated_Image_96golp96golp96go.jpg'); /* Use the correct filename/path */
 
-    .background-section {
-      height: 60vh;
-      width: 100%;
-      background-attachment: fixed;
-      pointer-events: none;
-    }
+        /* Step 3b: Key background properties for coverage */
+        background-size: contain;           /* Shows the entire image without cropping */
+        background-position: center center; /* Centers the image on the page */
+        background-repeat: no-repeat;       /* Prevents the image from tiling */
+        background-attachment: fixed;      /* (Optional) The image stays put when scrolling */
 
-    .content-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      min-height: 100vh;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.98) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Cormorant Garamond', 'Georgia', serif;
+        color: #4d2f1d; /* Darker gold-brown text for elegant invitation styling */
+        text-align: center;
+        padding: 40px 20px;
+        margin: 0;
+        min-height: 100vh;
+        box-sizing: border-box;
     }
-
     .card {
       width: min(500px, calc(100vw - 40px));
       max-width: 90vw;
+      margin: 0 auto;
       background: rgba(255, 255, 255, 0.68);
       color: #4d2f1d;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-sizing: border-box;
       border: 1px solid rgba(89, 57, 34, 0.18);
     }
-
     @media (max-width: 480px) {
       .card {
         width: 85vw;
@@ -57,7 +47,6 @@
         padding: 25px;
       }
     }
-
     h1 {
       color: #4d2f1d;
       font-family: 'Parisienne', 'Cormorant Garamond', serif;
@@ -66,27 +55,23 @@
       margin: 0 0 10px;
       letter-spacing: 1px;
     }
-
     h2, h3, h4, h5, p, label {
       color: #4d2f1d;
       font-family: 'Cormorant Garamond', 'Georgia', serif;
       margin: 0;
     }
-
     h2 {
       font-size: 1.8rem;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
     h3 {
       font-size: 2.3rem;
       font-weight: 600;
       margin-top: 8px;
       margin-bottom: 16px;
     }
-
     h4 {
       font-size: 1.2rem;
       font-weight: 500;
@@ -95,13 +80,11 @@
       line-height: 1.5;
       margin-bottom: 18px;
     }
-
     #initialQuestion h5 {
       font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 8px;
     }
-
     .card p,
     .card h2,
     .card h3,
@@ -110,9 +93,7 @@
     .card label {
       color: #4d2f1d;
     }
-
     .btn-group { margin-top: 20px; }
-
     button {
       padding: 12px 24px;
       font-size: 16px;
@@ -124,15 +105,12 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
     .yes-btn { background-color: #708d81; color: white; }
     .no-btn { background-color: #d8b4a0; color: white; }
-
     form {
       text-align: left;
       margin-top: 20px;
     }
-
     input, select, textarea {
       width: 100%;
       padding: 10px 12px;
@@ -146,18 +124,15 @@
       color: #4d2f1d;
       background: rgba(255,255,255,0.5);
     }
-
     label {
       font-size: 1.2rem;
       font-weight: 600;
     }
-
     .field-hint {
       margin: -10px 0 15px;
       font-size: 1rem;
       text-align: left;
     }
-
     .submit-btn {
       background-color: #708d81;
       color: white;
@@ -167,62 +142,58 @@
 </head>
 <body>
 
-  <div class="background-section"></div>
-
-  <div class="content-section">
-    <div class="card">
-      <h1>Wedding Invitation</h1>
-      <h2>The Marriage Of </h2>
-      <h3>Linda Diec & Daniel Tran</h3>
-      <h4>📅 30.07.2027 | 📍 MARINA BAY RESORT, VUNG TAU, VIETNAM</h4>
-      
-      <div id="initialQuestion">
-        <h5>Will you be attending?</h5>
-        <div class="btn-group">
-          <button class="yes-btn" onclick="selectAttending('Yes')">YES</button>
-          <button class="no-btn" onclick="selectAttending('No')">POLITELY NO</button>
-        </div>
+  <div class="card">
+    <h1>Wedding Invitation</h1>
+    <h2>The Marriage Of </h2>
+    <h3>Linda Diec & Daniel Tran</h3>
+    <h4>📅 30.07.2027 | 📍 MARINA BAY RESORT, VUNG TAU, VIETNAM</h4>
+    
+    <div id="initialQuestion">
+      <h5>Will you be attending?</h5>
+      <div class="btn-group">
+        <button class="yes-btn" onclick="selectAttending('Yes')">YES</button>
+        <button class="no-btn" onclick="selectAttending('No')">POLITELY NO</button>
       </div>
+    </div>
 
-      <!-- Hidden form that reveals after clicking an option -->
-      <div id="rsvpSection" style="display:none; margin-top: 20px;">
-        <form id="rsvpForm">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required>
+    <!-- Hidden form that reveals after clicking an option -->
+    <div id="rsvpSection" style="display:none; margin-top: 20px;">
+      <form id="rsvpForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
 
-          <input type="hidden" id="attending" name="attending">
+        <input type="hidden" id="attending" name="attending">
 
-          <label for="country">Country</label>
-          <select id="country" name="country" required>
-            <option value="">Choose your country</option>
-          </select>
-          <p class="field-hint">Countries are listed alphabetically.</p>
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+          <option value="">Choose your country</option>
+        </select>
+        <p class="field-hint">Countries are listed alphabetically.</p>
 
-          <label for="phoneCountryCode">Country Code</label>
-          <select id="phoneCountryCode" name="phoneCountryCode">
-            <option value="">Choose a calling code</option>
-          </select>
+        <label for="phoneCountryCode">Country Code</label>
+        <select id="phoneCountryCode" name="phoneCountryCode">
+          <option value="">Choose a calling code</option>
+        </select>
 
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="555 123 4567">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="555 123 4567">
 
-          <label for="guests">Number of Guests</label>
-          <input type="number" id="guests" name="guests" min="1" value="1">
+        <label for="guests">Number of Guests</label>
+        <input type="number" id="guests" name="guests" min="1" value="1">
 
-          <label for="guestNames">Name Your Guests (Full name)</label>
-          <textarea id="guestNames" name="guestNames" rows="2"></textarea>
+        <label for="guestNames">Name Your Guests (Full name)</label>
+        <textarea id="guestNames" name="guestNames" rows="2"></textarea>
 
-          <label for="notes">Notes</label>
-          <textarea id="notes" name="notes" rows="3"></textarea>
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes" rows="3"></textarea>
 
-          <label for="allergies">Allergies</label>
-          <textarea id="allergies" name="allergies" rows="2"></textarea>
+        <label for="allergies">Allergies</label>
+        <textarea id="allergies" name="allergies" rows="2"></textarea>
 
-          <button type="submit" id="submitBtn" class="submit-btn">Send Response</button>
-        </form>
+        <button type="submit" id="submitBtn" class="submit-btn">Send Response</button>
+      </form>
 
-        <p id="statusMessage" style="display:none; text-align: center; margin-top: 15px;"></p>
-      </div>
+      <p id="statusMessage" style="display:none; text-align: center; margin-top: 15px;"></p>
     </div>
   </div>
 
@@ -248,7 +219,7 @@
       'Cabo Verde': '238', 'Cambodia': '855', 'Cameroon': '237', 'Canada': '1',
       'Central African Republic': '236', 'Chad': '235', 'Chile': '56', 'China': '86',
       'Colombia': '57', 'Comoros': '269', 'Congo': '242', 'Costa Rica': '506',
-      'Côte d'Ivoire': '225', 'Croatia': '385', 'Cuba': '53', 'Cyprus': '357',
+      'Côte d’Ivoire': '225', 'Croatia': '385', 'Cuba': '53', 'Cyprus': '357',
       'Czechia': '420', 'Democratic Republic of the Congo': '243', 'Denmark': '45',
       'Djibouti': '253', 'Dominica': '1 767', 'Dominican Republic': '1 809',
       'Ecuador': '593', 'Egypt': '20', 'El Salvador': '503', 'Equatorial Guinea': '240',
@@ -295,7 +266,7 @@
       'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil',
       'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi',
       'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad',
-      'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Côte d'Ivoire',
+      'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Côte d’Ivoire',
       'Croatia', 'Cuba', 'Cyprus', 'Czechia',
       'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica',
       'Dominican Republic',
