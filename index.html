@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You're Invited!</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap');
 
     body {
     /* Step 3a: Link to your background image */
@@ -19,8 +20,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: 'Georgia', serif;
-        color: #ffffff; /* White text looks best on dark/translucent overlays */
+        font-family: 'Cormorant Garamond', 'Georgia', serif;
+        color: #4d2f1d; /* Darker gold-brown text for elegant invitation styling */
         text-align: center;
         padding: 40px 20px;
         margin: 0;
@@ -30,19 +31,59 @@
     .card {
       width: min(500px, calc(100vw - 40px));
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
-      color: #8b5e3c; /* Golden brown text for the invitation card */
+      background: rgba(255, 255, 255, 0.68);
+      color: #4d2f1d;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       box-sizing: border-box;
+      border: 1px solid rgba(89, 57, 34, 0.18);
     }
-    h1 { color: #8b5e3c; }
+    h1 {
+      color: #4d2f1d;
+      font-family: 'Parisienne', 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      margin: 0 0 10px;
+      letter-spacing: 1px;
+    }
+    h2, h3, h4, h5, p, label {
+      color: #4d2f1d;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      margin: 0;
+    }
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h3 {
+      font-size: 2.3rem;
+      font-weight: 600;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    #initialQuestion h5 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
     .card p,
     .card h2,
     .card h3,
+    .card h4,
+    .card h5,
     .card label {
-      color: #8b5e3c;
+      color: #4d2f1d;
     }
     .btn-group { margin-top: 20px; }
     button {
@@ -52,6 +93,9 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     .yes-btn { background-color: #708d81; color: white; }
     .no-btn { background-color: #d8b4a0; color: white; }
@@ -61,10 +105,20 @@
     }
     input, select, textarea {
       width: 100%;
-      padding: 8px;
+      padding: 10px 12px;
       margin-top: 5px;
       margin-bottom: 15px;
       box-sizing: border-box;
+      border: 1px solid rgba(89, 57, 34, 0.3);
+      border-radius: 6px;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: 1.1rem;
+      color: #4d2f1d;
+      background: rgba(255,255,255,0.5);
+    }
+    label {
+      font-size: 1.2rem;
+      font-weight: 600;
     }
     .submit-btn {
       background-color: #708d81;
