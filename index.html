@@ -19,15 +19,15 @@
     }
     .hero {
       position: relative;
-      min-height: 72vh;
-      min-height: 72svh;
+      min-height: 100vh;
+      min-height: 100svh;
       background-color: #b9a991;
       background-image:
         linear-gradient(180deg, rgba(30, 24, 18, 0.08), rgba(30, 24, 18, 0.24)),
         url('Gemini_Generated_Image_96golp96golp96go.jpg'),
         radial-gradient(ellipse at 50% 20%, #f1e8d8 0%, #c8b69a 52%, #8d7964 100%);
-      background-size: cover;
-      background-position: center;
+      background-size: 100% 100%, contain, 100% 100%;
+      background-position: center, center, center;
       background-repeat: no-repeat;
     }
     .scroll-cue {
@@ -49,7 +49,7 @@
       position: relative;
       z-index: 1;
       width: min(500px, calc(100% - 32px));
-      margin: -46px auto 40px;
+      margin: 24px auto 40px;
       background: rgba(255, 255, 255, 0.76);
       color: #4d2f1d;
       padding: clamp(20px, 5vw, 30px);
@@ -152,8 +152,8 @@
     }
     @media (max-width: 600px) {
       .hero {
-        min-height: 62vh;
-        min-height: 62svh;
+        min-height: 100vh;
+        min-height: 100svh;
         background-position: center;
       }
       .scroll-cue {
